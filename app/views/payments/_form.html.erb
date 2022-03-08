@@ -1,0 +1,29 @@
+<%= form_with(model: payment) do |form| %>
+  <% if payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+        <% payment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-check">
+    <%= form.label :Merchant, class: "col-2 col-form-label" %>
+      <%= form.collection_select(:merchant_id, Merchant.all, :id, :name,
+      {multiple: true, size: 3, class: "custom-select shadow rounded "}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recieved %>
+    <%= form.check_box :recieved %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

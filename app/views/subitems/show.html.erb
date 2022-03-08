@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>name:</strong>
+  <%= @subitem.name %>
+</p>
+<p>
+  <strong>Subs usage:</strong>
+  <%= @subitem.subs_usage %>
+</p>
+
+<p>
+  <strong>Tracked quantity:</strong>
+  <%= @subitem.tracked_quantity %>
+</p>
+
+<p>
+  <strong>Notification:</strong>
+  <%= @subitem.notification %>
+</p>
+
+<p>
+  <strong>Approval:</strong>
+  <%= @subitem.approval %>
+</p>
+
+<p>
+  <strong>Subscription:</strong>
+  <%= @subitem.subscription.name %>
+</p>
+
+<p>
+  <strong>Feature:</strong>
+  <%= @subitem.feature.name %>
+</p>
+
+<%= link_to 'Edit', edit_subitem_path(@subitem) %> |
+<%= link_to 'Back', subitems_path %>

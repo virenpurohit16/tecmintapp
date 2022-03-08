@@ -1,0 +1,61 @@
+<%= form_with(model: subscription) do |form| %>
+  <% if subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+        <% subscription.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <strong>Select Option</strong>
+
+  </br>
+  <div class="form-check">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        Existing Merchant
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        New Merchant
+      </label>
+    </div>
+  </div>
+
+  <div class="form-check">
+    <%= form.label :Merchant, class: "col-2 col-form-label" %>
+      <%= form.collection_select(:merchant_id, Merchant.all, :id, :name,
+      {multiple: false, size: 3, class: "custom-select shadow rounded"}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approval %>
+    <%= form.check_box :approval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notifications %>
+    <%= form.check_box :notifications %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-primary" %>
+  </div>
+<% end %>

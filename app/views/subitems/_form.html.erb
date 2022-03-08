@@ -1,0 +1,54 @@
+<%= form_with(model: subitem) do |form| %>
+  <% if subitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subitem.errors.count, "error") %> prohibited this subitem from being saved:</h2>
+
+      <ul>
+        <% subitem.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subs_usage %>
+    <%= form.number_field :subs_usage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tracked_quantity %>
+    <%= form.number_field :tracked_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notification %>
+    <%= form.check_box :notification %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approval %>
+    <%= form.check_box :approval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Subscription %>
+      <%= form.collection_select(:subscription_id, Subscription.all, :id , :name,
+      {multiple: true, size: 3, class: "custom-select shadow rounded "}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Feature %>
+      <%= form.collection_select(:feature_id, Feature.all, :id, :name,
+      {multiple: true, size: 3, class: "custom-select shadow rounded "}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
